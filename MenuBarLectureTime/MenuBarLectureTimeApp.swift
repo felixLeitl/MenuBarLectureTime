@@ -14,5 +14,6 @@ struct MenuBarLectureTimeApp: App {
             ContentView()
         }
         .menuBarExtraStyle(.window)
+        //TODO: Shortcut for settings and quit
     }
 }

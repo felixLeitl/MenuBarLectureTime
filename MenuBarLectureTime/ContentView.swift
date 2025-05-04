@@ -11,14 +11,18 @@ import Foundation
 struct ContentView: View {
     @State private var time = Date().timeIntervalSince1970
     private let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
-        
+    
+    @AppStorage("lectureBeginning") private var lectureBeginning: Int = 15
+    @AppStorage("lectureDuration") private var lectureDuration: Int = 90
+    @AppStorage("showRemainingTime") var showRemainingTime: Bool = true
+
     
     var body: some View {
         VStack {
             Text(timeText()).onReceive(timer) { input in
                 time = input.timeIntervalSince1970
             }
-            ProgressView(value: 1 - timePercentage())
+            ProgressView(value: showRemainingTime ? 1 - timePercentage() : timePercentage())
         }
         .padding()
     }
@@ -29,25 +33,33 @@ struct ContentView: View {
         //TODO: check the added time
         let hours = (totalSeconds / 3600 + 2) % 24
         
-        var isLecture = hours%2==0
-        if isLecture && minutes < 15 {
-            isLecture = false
-        } else if !isLecture && minutes < 45 {
-            isLecture = true
-        }
+        var isLecture: Bool
         
         var timeToGO: Int = 0
-        if hours%2==0 {
-            if minutes < 15 {
-                timeToGO = 15 - minutes
+        if(lectureDuration == 90){
+            if hours%2==0 {
+                if minutes < lectureBeginning {
+                    timeToGO = lectureBeginning - minutes
+                    isLecture = false
+                } else {
+                    timeToGO = lectureDuration - (minutes - lectureBeginning)
+                    isLecture = true
+                }
             } else {
-                timeToGO = 90 - (minutes - 15)
+                if minutes < 60 - (30 - lectureBeginning) {
+                    timeToGO = 60 - minutes - (30 - lectureBeginning)
+                    isLecture = true
+                } else {
+                    timeToGO = (60 - minutes) + lectureBeginning
+                    isLecture = false
+                }
             }
         } else {
-            if minutes < 45 {
-                timeToGO = 45 - minutes
+            isLecture = true
+            if hours%2==0 {
+                timeToGO = 120 - minutes
             } else {
-                timeToGO = 30 - (minutes - 45)
+                timeToGO = 60 - minutes
             }
         }
         
@@ -61,7 +73,7 @@ struct ContentView: View {
     
     func timePercentage() -> Double {
         let (timeToGO, isLecture) = formatedTime(time)
-        return isLecture ? Double(timeToGO)/90.0 : Double(timeToGO)/30.0
+        return isLecture ? Double(timeToGO)/Double(lectureDuration) : Double(timeToGO)/30.0
     }
 }
 

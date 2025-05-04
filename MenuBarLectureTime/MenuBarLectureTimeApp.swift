@@ -10,10 +10,17 @@ import SwiftUI
 @main
 struct MenuBarLectureTimeApp: App {
     var body: some Scene {
+        
+            let _ = NSApplication.shared.setActivationPolicy(.prohibited)
+
         MenuBarExtra("Lecture Countdown", systemImage: "studentdesk") {
             ContentView()
         }
         .menuBarExtraStyle(.window)
-        //TODO: Shortcut for settings and quit
+        Settings{
+            SettingsView()
+                .frame(width: 300, height: 100)
+        }
+        
     }
 }

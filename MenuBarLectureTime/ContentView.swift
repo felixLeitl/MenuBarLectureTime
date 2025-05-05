@@ -24,6 +24,12 @@ struct ContentView: View {
         VStack {
             Text(timeText()).onReceive(timer) { input in
                 time = input.timeIntervalSince1970
+                if !formatedTime(time).isLecture && !confettiLaunched{
+                    confettiLaunched = true
+                    confettiState.toggle()
+                } else if formatedTime(time).isLecture && confettiLaunched{
+                    confettiLaunched = false
+                }
             }
             ProgressView(value: showRemainingTime ? 1 - timePercentage() : timePercentage())
                 .confettiCannon(trigger: $confettiState)
@@ -42,9 +48,6 @@ struct ContentView: View {
         var timeToGO: Int = 0
         if(lectureDuration == 90){
             if hours%2==0 {
-                if confettiLaunched {
-                    confettiLaunched = false
-                }
                 if minutes < lectureBeginning {
                     timeToGO = lectureBeginning - minutes
                     isLecture = false
@@ -57,10 +60,6 @@ struct ContentView: View {
                     timeToGO = 60 - minutes - (30 - lectureBeginning)
                     isLecture = true
                 } else {
-                    if !confettiLaunched {
-                        confettiLaunched = true
-                        confettiState.toggle()
-                    }
                     timeToGO = (60 - minutes) + lectureBeginning
                     isLecture = false
                 }

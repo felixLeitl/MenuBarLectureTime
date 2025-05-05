@@ -7,9 +7,12 @@
 
 import SwiftUI
 import Foundation
+import ConfettiSwiftUI
 
 struct ContentView: View {
     @State private var time = Date().timeIntervalSince1970
+    @State private var confettiState: Bool = false
+    @State private var confettiLaunched: Bool = false
     private let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
     @AppStorage("lectureBeginning") private var lectureBeginning: Int = 15
@@ -23,6 +26,7 @@ struct ContentView: View {
                 time = input.timeIntervalSince1970
             }
             ProgressView(value: showRemainingTime ? 1 - timePercentage() : timePercentage())
+                .confettiCannon(trigger: $confettiState)
         }
         .padding()
     }
@@ -38,6 +42,9 @@ struct ContentView: View {
         var timeToGO: Int = 0
         if(lectureDuration == 90){
             if hours%2==0 {
+                if confettiLaunched {
+                    confettiLaunched = false
+                }
                 if minutes < lectureBeginning {
                     timeToGO = lectureBeginning - minutes
                     isLecture = false
@@ -50,6 +57,10 @@ struct ContentView: View {
                     timeToGO = 60 - minutes - (30 - lectureBeginning)
                     isLecture = true
                 } else {
+                    if !confettiLaunched {
+                        confettiLaunched = true
+                        confettiState.toggle()
+                    }
                     timeToGO = (60 - minutes) + lectureBeginning
                     isLecture = false
                 }

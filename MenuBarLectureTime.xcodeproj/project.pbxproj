@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		F9C16EBB2DC8D1CD00980562 /* ConfettiSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = F9C16EBA2DC8D1CD00980562 /* ConfettiSwiftUI */; };
+		F9DE55E62DCE143C0027BA2A /* ConfettiSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = F9DE55E52DCE143C0027BA2A /* ConfettiSwiftUI */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,7 +27,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F9C16EBB2DC8D1CD00980562 /* ConfettiSwiftUI in Frameworks */,
+				F9DE55E62DCE143C0027BA2A /* ConfettiSwiftUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -70,7 +70,7 @@
 			);
 			name = MenuBarLectureTime;
 			packageProductDependencies = (
-				F9C16EBA2DC8D1CD00980562 /* ConfettiSwiftUI */,
+				F9DE55E52DCE143C0027BA2A /* ConfettiSwiftUI */,
 			);
 			productName = MenuBarLectureTime;
 			productReference = F990A0332DC27D6200220BBB /* MenuBarLectureTime.app */;
@@ -101,7 +101,7 @@
 			mainGroup = F990A02A2DC27D6200220BBB;
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
-				F9C16EB92DC8D1CD00980562 /* XCRemoteSwiftPackageReference "ConfettiSwiftUI" */,
+				F9DE55E42DCE143C0027BA2A /* XCRemoteSwiftPackageReference "ConfettiSwiftUI" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = F990A0342DC27D6200220BBB /* Products */;
@@ -339,9 +339,9 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		F9C16EB92DC8D1CD00980562 /* XCRemoteSwiftPackageReference "ConfettiSwiftUI" */ = {
+		F9DE55E42DCE143C0027BA2A /* XCRemoteSwiftPackageReference "ConfettiSwiftUI" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/simibac/ConfettiSwiftUI.git";
+			repositoryURL = "https://github.com/simibac/ConfettiSwiftUI";
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 2.0.3;
@@ -350,9 +350,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		F9C16EBA2DC8D1CD00980562 /* ConfettiSwiftUI */ = {
+		F9DE55E52DCE143C0027BA2A /* ConfettiSwiftUI */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = F9C16EB92DC8D1CD00980562 /* XCRemoteSwiftPackageReference "ConfettiSwiftUI" */;
+			package = F9DE55E42DCE143C0027BA2A /* XCRemoteSwiftPackageReference "ConfettiSwiftUI" */;
 			productName = ConfettiSwiftUI;
 		};
 /* End XCSwiftPackageProductDependency section */

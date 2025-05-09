@@ -11,7 +11,7 @@ import SwiftUI
 struct MenuBarLectureTimeApp: App {
     var body: some Scene {
         
-            let _ = NSApplication.shared.setActivationPolicy(.prohibited)
+        let _ = NSApplication.shared.setActivationPolicy(.prohibited)
 
         MenuBarExtra("Lecture Countdown", systemImage: "studentdesk") {
             ContentView()

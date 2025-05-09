@@ -78,7 +78,7 @@ struct ContentView: View {
     
     func timeText() -> String {
         let (timeToGO, isLecture) = formatedTime(time)
-        return (isLecture ? "Time 'til end: " : "Time 'til begining: ") + String(timeToGO) + " min "
+        return (isLecture ? "Time 'til end: " : "Time 'til beginning: ") + String(timeToGO) + " min "
     }
     
     func timePercentage() -> Double {

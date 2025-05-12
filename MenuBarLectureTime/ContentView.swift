@@ -12,7 +12,7 @@ import ConfettiSwiftUI
 struct ContentView: View {
     @State private var time = Date().timeIntervalSince1970
     @State private var confettiState: Bool = false
-    @State private var confettiLaunched: Bool = false
+    @State private var confettiLaunched: Bool = true
     private let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
     @AppStorage("lectureBeginning") private var lectureBeginning: Int = 15

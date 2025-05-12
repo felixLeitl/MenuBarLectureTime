@@ -11,7 +11,7 @@ import SwiftUI
 struct MenuBarLectureTimeApp: App {
     var body: some Scene {
         
-        let _ = NSApplication.shared.setActivationPolicy(.prohibited)
+        let _ = NSApplication.shared.setActivationPolicy(.accessory)
 
         MenuBarExtra("Lecture Countdown", systemImage: "studentdesk") {
             ContentView()
@@ -20,7 +20,10 @@ struct MenuBarLectureTimeApp: App {
         Settings{
             SettingsView()
                 .frame(width: 300, height: 100)
+                .onAppear {
+                    NSApp.activate(ignoringOtherApps: true)
+                }
         }
-        
+        .windowLevel(.floating)
     }
 }

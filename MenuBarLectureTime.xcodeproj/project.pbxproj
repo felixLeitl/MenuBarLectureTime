@@ -14,9 +14,22 @@
 		F990A0332DC27D6200220BBB /* MenuBarLectureTime.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MenuBarLectureTime.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		F922C7F52DD2B2CC001BE300 /* Exceptions for "MenuBarLectureTime" folder in "MenuBarLectureTime" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = F990A0322DC27D6200220BBB /* MenuBarLectureTime */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		F990A0352DC27D6200220BBB /* MenuBarLectureTime */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				F922C7F52DD2B2CC001BE300 /* Exceptions for "MenuBarLectureTime" folder in "MenuBarLectureTime" target */,
+			);
 			path = MenuBarLectureTime;
 			sourceTree = "<group>";
 		};
@@ -268,6 +281,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MenuBarLectureTime/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Vorlesungs Countdown";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
@@ -298,6 +312,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MenuBarLectureTime/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Vorlesungs Countdown";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";

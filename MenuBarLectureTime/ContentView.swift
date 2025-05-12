@@ -11,8 +11,8 @@ import ConfettiSwiftUI
 
 struct ContentView: View {
     @State private var time = Date().timeIntervalSince1970
-    @State private var confettiState: Bool = false
-    @State private var confettiLaunched: Bool = true
+    @State private var lectureEnded: Bool = false
+    @State private var confettiToggle: Bool = false
     private let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
     @AppStorage("lectureBeginning") private var lectureBeginning: Int = 15
@@ -24,15 +24,9 @@ struct ContentView: View {
         VStack {
             Text(timeText()).onReceive(timer) { input in
                 time = input.timeIntervalSince1970
-                if !formatedTime(time).isLecture && !confettiLaunched{
-                    confettiLaunched = true
-                    confettiState.toggle()
-                } else if formatedTime(time).isLecture && confettiLaunched{
-                    confettiLaunched = false
-                }
             }
             ProgressView(value: showRemainingTime ? 1 - timePercentage() : timePercentage())
-                .confettiCannon(trigger: $confettiState)
+                .confettiCannon(trigger: $confettiToggle)
         }
         .padding()
     }
@@ -41,7 +35,7 @@ struct ContentView: View {
         let totalSeconds = Int(time)
         let minutes = (totalSeconds / 60) % 60
         //TODO: check the added time
-        let hours = (totalSeconds / 3600 + 2) % 24
+        let hours = (totalSeconds / 3600) % 24
         
         var isLecture: Bool
         
@@ -60,6 +54,12 @@ struct ContentView: View {
                     timeToGO = 60 - minutes - (30 - lectureBeginning)
                     isLecture = true
                 } else {
+                    if minutes == 60 - (30 - lectureBeginning) && lectureEnded == false{
+                        lectureEnded = true
+                        confettiToggle.toggle()
+                    } else if minutes > 60 - (30 - lectureBeginning){
+                        lectureEnded = false
+                    }
                     timeToGO = (60 - minutes) + lectureBeginning
                     isLecture = false
                 }

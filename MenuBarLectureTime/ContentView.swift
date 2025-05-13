@@ -24,6 +24,7 @@ struct ContentView: View {
         VStack {
             Text(timeText()).onReceive(timer) { input in
                 time = input.timeIntervalSince1970
+                confettiToggle = formatedTime(time).fireConfetti
             }
             ProgressView(value: showRemainingTime ? 1 - timePercentage() : timePercentage())
                 .confettiCannon(trigger: $confettiToggle)
@@ -31,13 +32,14 @@ struct ContentView: View {
         .padding()
     }
     
-    func formatedTime(_ time: TimeInterval) -> (time: Int, isLecture: Bool) {
+    func formatedTime(_ time: TimeInterval) -> (time: Int, isLecture: Bool, fireConfetti: Bool) {
         let totalSeconds = Int(time)
         let minutes = (totalSeconds / 60) % 60
         //TODO: check the added time
         let hours = (totalSeconds / 3600) % 24
         
         var isLecture: Bool
+        var fireConfetti: Bool = false
         
         var timeToGO: Int = 0
         if(lectureDuration == 90){
@@ -55,10 +57,7 @@ struct ContentView: View {
                     isLecture = true
                 } else {
                     if minutes == 60 - (30 - lectureBeginning) && lectureEnded == false{
-                        lectureEnded = true
-                        confettiToggle.toggle()
-                    } else if minutes > 60 - (30 - lectureBeginning){
-                        lectureEnded = false
+                        fireConfetti = true
                     }
                     timeToGO = (60 - minutes) + lectureBeginning
                     isLecture = false
@@ -67,22 +66,25 @@ struct ContentView: View {
         } else {
             isLecture = true
             if hours%2==0 {
+                if minutes == 0 {
+                    fireConfetti = true
+                }
                 timeToGO = 120 - minutes
             } else {
                 timeToGO = 60 - minutes
             }
         }
         
-        return (timeToGO, isLecture)
+        return (timeToGO, isLecture, fireConfetti)
     }
     
     func timeText() -> String {
-        let (timeToGO, isLecture) = formatedTime(time)
+        let (timeToGO, isLecture, _) = formatedTime(time)
         return (isLecture ? "Time 'til end: " : "Time 'til beginning: ") + String(timeToGO) + " min "
     }
     
     func timePercentage() -> Double {
-        let (timeToGO, isLecture) = formatedTime(time)
+        let (timeToGO, isLecture, _) = formatedTime(time)
         return isLecture ? Double(timeToGO)/Double(lectureDuration) : Double(timeToGO)/30.0
     }
 }

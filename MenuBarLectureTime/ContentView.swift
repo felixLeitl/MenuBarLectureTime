@@ -13,6 +13,7 @@ struct ContentView: View {
     @State private var time = Date().timeIntervalSince1970
     @State private var lectureEnded: Bool = false
     @State private var confettiToggle: Bool = false
+    @State private var showConfig: Bool = false
     private let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
     @AppStorage("lectureBeginning") private var lectureBeginning: Int = 15
@@ -21,15 +22,45 @@ struct ContentView: View {
 
     
     var body: some View {
-        VStack {
-            Text(timeText()).onReceive(timer) { input in
-                time = input.timeIntervalSince1970
-                confettiToggle = formatedTime(time).fireConfetti
+        ZStack{
+            VStack{
+                HStack{
+                    Spacer()
+                    Button {
+                        showConfig.toggle()
+                    } label: {
+                        Image(systemName: "questionmark.circle")
+                    }
+                    
+                }
+                Spacer()
             }
-            ProgressView(value: showRemainingTime ? 1 - timePercentage() : timePercentage())
-                .confettiCannon(trigger: $confettiToggle)
+            .padding()
+            VStack {
+                Text(timeText()).onReceive(timer) { input in
+                    time = input.timeIntervalSince1970
+                    confettiToggle = formatedTime(time).fireConfetti
+                }
+                ProgressView(value: showRemainingTime ? 1 - timePercentage() : timePercentage())
+                    .confettiCannon(trigger: $confettiToggle)
+                if(showConfig){
+                    Divider()
+                    Picker("Duration", selection: $lectureDuration){
+                        Text("90 min").tag(90)
+                        Text("120 min").tag(120)
+                    }
+                    .pickerStyle(.segmented)
+                        Picker("Start time", selection: $lectureBeginning) {
+                            Text("0").tag(0)
+                            Text("15").tag(15)
+                            Text("30").tag(30)
+                        }
+                        .pickerStyle(.segmented)
+                        .disabled(lectureDuration == 120)
+                }
+            }
+            .padding()
         }
-        .padding()
     }
     
     func formatedTime(_ time: TimeInterval) -> (time: Int, isLecture: Bool, fireConfetti: Bool) {

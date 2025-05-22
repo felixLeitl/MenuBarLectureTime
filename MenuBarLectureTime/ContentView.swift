@@ -14,24 +14,30 @@ struct ContentView: View {
     @State private var lectureEnded: Bool = false
     @State private var confettiToggle: Bool = false
     @State private var showConfig: Bool = false
+    
     private let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
     @AppStorage("lectureBeginning") private var lectureBeginning: Int = 15
     @AppStorage("lectureDuration") private var lectureDuration: Int = 90
     @AppStorage("showRemainingTime") var showRemainingTime: Bool = true
 
+    @Environment(\.openWindow) private var openWindow
     
     var body: some View {
         ZStack{
             VStack{
                 HStack{
+                    Button{
+                        openWindow(id: "FloatingWindow")
+                    } label: {
+                        Image(systemName: "macwindow.badge.plus")
+                    }
                     Spacer()
                     Button {
                         showConfig.toggle()
                     } label: {
-                        Image(systemName: "questionmark.circle")
+                        Image(systemName: "clock.arrow.trianglehead.counterclockwise.rotate.90")
                     }
-                    
                 }
                 Spacer()
             }

@@ -17,6 +17,17 @@ struct MenuBarLectureTimeApp: App {
             ContentView()
         }
         .menuBarExtraStyle(.window)
+        
+        Window("Floating Window", id: "FloatingWindow"){
+            ContentView()
+                .modifier(TransparentWindowModifier())
+                .onAppear{
+                    NSApp.activate(ignoringOtherApps: true)
+                }
+        }
+        .windowStyle(.hiddenTitleBar)
+        .windowBackgroundDragBehavior(.enabled)
+        
         Settings{
             SettingsView()
                 .frame(width: 300, height: 100)

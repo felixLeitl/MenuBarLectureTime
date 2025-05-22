@@ -10,8 +10,8 @@ import SwiftUI
 struct MenubarView: View {
     
     @Environment(\.openWindow) private var openWindow
-    @State private var showConfig: Bool = false
-    
+    @AppStorage("showConfig") private var showConfig: Bool = false
+
     var body: some View {
         ZStack{
             VStack{

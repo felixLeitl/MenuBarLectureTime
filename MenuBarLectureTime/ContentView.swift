@@ -13,7 +13,7 @@ struct ContentView: View {
     @State private var time = Date().timeIntervalSince1970
     @State private var lectureEnded: Bool = false
     @State private var confettiToggle: Bool = false
-    @State private var showConfig: Bool = false
+    @AppStorage("showConfig") private var showConfig: Bool = false
     
     private let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     

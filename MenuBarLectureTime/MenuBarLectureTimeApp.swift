@@ -27,6 +27,7 @@ struct MenuBarLectureTimeApp: App {
         }
         .windowStyle(.hiddenTitleBar)
         .windowBackgroundDragBehavior(.enabled)
+        .windowLevel(.floating)
         
         Settings{
             SettingsView()

@@ -9,8 +9,8 @@ import SwiftUI
 
 struct FloatingWindowView: View {
     
-    @State private var showConfig: Bool = false
     @Environment(\.dismiss) private var closeWindow
+    @AppStorage("showConfig") private var showConfig: Bool = false
     
     var body: some View {
         ZStack{

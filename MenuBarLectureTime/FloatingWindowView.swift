@@ -1,5 +1,5 @@
 //
-//  MenubarView.swift
+//  FloatingWindowView.swift
 //  MenuBarLectureTime
 //
 //  Created by Felix Leitl on 22.05.25.
@@ -7,19 +7,19 @@
 
 import SwiftUI
 
-struct MenubarView: View {
+struct FloatingWindowView: View {
     
-    @Environment(\.openWindow) private var openWindow
     @State private var showConfig: Bool = false
+    @Environment(\.dismiss) private var closeWindow
     
     var body: some View {
         ZStack{
             VStack{
                 HStack{
                     Button{
-                        openWindow(id: "FloatingWindow")
+                        closeWindow()
                     } label: {
-                        Image(systemName: "macwindow.badge.plus")
+                        Image(systemName: "xmark.circle")
                     }
                     Spacer()
                     Button {
@@ -37,5 +37,5 @@ struct MenubarView: View {
 }
 
 #Preview {
-    MenubarView()
+    FloatingWindowView()
 }

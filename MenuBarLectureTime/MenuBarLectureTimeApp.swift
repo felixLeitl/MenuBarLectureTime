@@ -14,12 +14,12 @@ struct MenuBarLectureTimeApp: App {
         let _ = NSApplication.shared.setActivationPolicy(.accessory)
 
         MenuBarExtra("Lecture Countdown", systemImage: "studentdesk") {
-            ContentView()
+            MenubarView()
         }
         .menuBarExtraStyle(.window)
         
         Window("Floating Window", id: "FloatingWindow"){
-            ContentView()
+            FloatingWindowView()
                 .modifier(TransparentWindowModifier())
                 .onAppear{
                     NSApp.activate(ignoringOtherApps: true)

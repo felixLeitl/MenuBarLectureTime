@@ -103,7 +103,6 @@ struct ContentView: View {
     
     func timePercentage() -> Double {
         let forTime = formatedTime(time)
-        print(Double(forTime.time * 60 + forTime.seconds)/60)
         return forTime.isLecture ? Double(forTime.time * 60 + forTime.seconds)/Double(lectureDuration * 60) : Double(forTime.time * 60 + forTime.seconds)/(30.0 * 60)
     }
 }

@@ -27,10 +27,6 @@ struct MenuBarLectureTimeApp: App {
                 .contentShape(RoundedRectangle(cornerRadius: 12))
                 .clipShape(RoundedRectangle(cornerRadius: 12))
         }
-        .windowStyle(.hiddenTitleBar)
-        .windowBackgroundDragBehavior(.enabled)
-        .windowLevel(.floating)
-        
         Settings{
             SettingsView()
                 .frame(width: 300, height: 100)

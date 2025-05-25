@@ -50,8 +50,9 @@ struct ContentView: View {
             .padding()
     }
     
-    func formatedTime(_ time: TimeInterval) -> (time: Int, isLecture: Bool, fireConfetti: Bool) {
+    func formatedTime(_ time: TimeInterval) -> (time: Int, isLecture: Bool, fireConfetti: Bool, seconds: Int) {
         let totalSeconds = Int(time)
+        let seconds = totalSeconds % 60
         let minutes = (totalSeconds / 60) % 60
         //TODO: check the added time
         let hours = (totalSeconds / 3600) % 24
@@ -92,18 +93,18 @@ struct ContentView: View {
                 timeToGO = 60 - minutes
             }
         }
-        
-        return (timeToGO, isLecture, fireConfetti)
+        return (timeToGO - 1, isLecture, fireConfetti, 60 - seconds)
     }
     
     func timeText() -> String {
-        let (timeToGO, isLecture, _) = formatedTime(time)
-        return (isLecture ? "Time 'til end: " : "Time 'til beginning: ") + String(timeToGO) + " min "
+        let (timeToGO, isLecture, _, seconds) = formatedTime(time)
+        return (isLecture ? "Time 'til end: " : "Time 'til beginning: ") + "\(timeToGO) min : \(seconds) sec"
     }
     
     func timePercentage() -> Double {
-        let (timeToGO, isLecture, _) = formatedTime(time)
-        return isLecture ? Double(timeToGO)/Double(lectureDuration) : Double(timeToGO)/30.0
+        let forTime = formatedTime(time)
+        print(Double(forTime.time * 60 + forTime.seconds)/60)
+        return forTime.isLecture ? Double(forTime.time * 60 + forTime.seconds)/Double(lectureDuration * 60) : Double(forTime.time * 60 + forTime.seconds)/(30.0 * 60)
     }
 }
 

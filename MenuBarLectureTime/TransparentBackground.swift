@@ -17,13 +17,12 @@ struct TransparentWindowModifier: ViewModifier {
                 window.hasShadow = true
                 window.collectionBehavior = [.canJoinAllSpaces]
                 window.isMovableByWindowBackground = true
-                
                 window.titleVisibility = .hidden
                 window.titlebarAppearsTransparent = true
                 window.standardWindowButton(.closeButton)?.isHidden = true
                 window.standardWindowButton(.miniaturizeButton)?.isHidden = true
                 window.standardWindowButton(.zoomButton)?.isHidden = true
-                window.styleMask.remove(.titled)
+                window.styleMask.remove(.titled)                
             })
             .background(VisualEffectBlur())
     }

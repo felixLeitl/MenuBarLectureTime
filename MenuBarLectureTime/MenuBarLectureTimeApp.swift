@@ -24,6 +24,7 @@ struct MenuBarLectureTimeApp: App {
                 .onAppear{
                     NSApp.activate(ignoringOtherApps: true)
                 }
+                .clipShape(RoundedRectangle(cornerRadius: 12))
         }
         .windowStyle(.hiddenTitleBar)
         .windowBackgroundDragBehavior(.enabled)

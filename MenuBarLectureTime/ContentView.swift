@@ -24,24 +24,6 @@ struct ContentView: View {
     @Environment(\.openWindow) private var openWindow
     
     var body: some View {
-//        ZStack{
-//            VStack{
-//                HStack{
-//                    Button{
-//                        openWindow(id: "FloatingWindow")
-//                    } label: {
-//                        Image(systemName: "macwindow.badge.plus")
-//                    }
-//                    Spacer()
-//                    Button {
-//                        showConfig.toggle()
-//                    } label: {
-//                        Image(systemName: "clock.arrow.trianglehead.counterclockwise.rotate.90")
-//                    }
-//                }
-//                Spacer()
-//            }
-//            .padding()
             VStack {
                 Text(timeText()).onReceive(timer) { input in
                     time = input.timeIntervalSince1970
@@ -66,7 +48,6 @@ struct ContentView: View {
                 }
             }
             .padding()
-//        }
     }
     
     func formatedTime(_ time: TimeInterval) -> (time: Int, isLecture: Bool, fireConfetti: Bool) {

@@ -52,10 +52,6 @@ struct SettingsView: View {
         @AppStorage("showRemainingTime") var showRemainingTime: Bool = true
         var body: some View {
             VStack(alignment: .trailing){
-//                Toggle("Show Appicon", isOn: $showAppicon)
-//                    .toggleStyle(.switch)
-//                Toggle("Show Remaining Time", isOn: $showRemainingTime)
-//                    .toggleStyle(.switch)
                 Picker("Show time", selection: $showRemainingTime){
                     Text("Remaining").tag(true)
                     Text("Done").tag(false)

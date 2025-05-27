@@ -26,6 +26,8 @@ struct MenuBarLectureTimeApp: App {
                 }
                 .contentShape(RoundedRectangle(cornerRadius: 12))
                 .clipShape(RoundedRectangle(cornerRadius: 12))
+                .frame(width: 300, height: 100)
+                .fixedSize(horizontal: false, vertical: false)
         }
         Settings{
             SettingsView()

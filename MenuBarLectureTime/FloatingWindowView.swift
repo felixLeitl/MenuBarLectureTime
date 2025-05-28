@@ -22,11 +22,11 @@ struct FloatingWindowView: View {
                         Image(systemName: "xmark.circle")
                     }
                     Spacer()
-                    Button {
-                        showConfig.toggle()
-                    } label: {
-                        Image(systemName: "clock.arrow.trianglehead.counterclockwise.rotate.90")
-                    }
+//                    Button {
+//                        showConfig.toggle()
+//                    } label: {
+//                        Image(systemName: "clock.arrow.trianglehead.counterclockwise.rotate.90")
+//                    }
                 }
                 Spacer()
             }

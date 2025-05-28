@@ -10,7 +10,6 @@ import SwiftUI
 struct FloatingWindowView: View {
     
     @Environment(\.dismiss) private var closeWindow
-    @AppStorage("showConfig") private var showConfig: Bool = false
     
     var body: some View {
         ZStack{
@@ -22,11 +21,6 @@ struct FloatingWindowView: View {
                         Image(systemName: "xmark.circle")
                     }
                     Spacer()
-//                    Button {
-//                        showConfig.toggle()
-//                    } label: {
-//                        Image(systemName: "clock.arrow.trianglehead.counterclockwise.rotate.90")
-//                    }
                 }
                 Spacer()
             }

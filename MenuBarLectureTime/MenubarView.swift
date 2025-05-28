@@ -11,7 +11,10 @@ struct MenubarView: View {
     
     @Environment(\.openWindow) private var openWindow
     @AppStorage("showConfig") private var showConfig: Bool = false
-
+    @AppStorage("lectureBeginning") private var lectureBeginning: Int = 15
+    @AppStorage("lectureDuration") private var lectureDuration: Int = 90
+    @AppStorage("showRemainingTime") var showRemainingTime: Bool = true
+    
     var body: some View {
         ZStack{
             VStack{
@@ -31,7 +34,25 @@ struct MenubarView: View {
                 Spacer()
             }
             .padding()
-            ContentView()
+            VStack{
+                ContentView()
+                if(showConfig){
+                    Divider()
+                    Picker("Duration", selection: $lectureDuration){
+                        Text("90 min").tag(90)
+                        Text("120 min").tag(120)
+                    }
+                    .pickerStyle(.segmented)
+                        Picker("Start time", selection: $lectureBeginning) {
+                            Text("0").tag(0)
+                            Text("15").tag(15)
+                            Text("30").tag(30)
+                        }
+                        .pickerStyle(.segmented)
+                        .disabled(lectureDuration == 120)
+                }
+            }
+            .padding()
         }
     }
 }

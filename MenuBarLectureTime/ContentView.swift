@@ -31,21 +31,6 @@ struct ContentView: View {
                 }
                 ProgressView(value: showRemainingTime ? 1 - timePercentage() : timePercentage())
                     .confettiCannon(trigger: $confettiToggle)
-                if(showConfig){
-                    Divider()
-                    Picker("Duration", selection: $lectureDuration){
-                        Text("90 min").tag(90)
-                        Text("120 min").tag(120)
-                    }
-                    .pickerStyle(.segmented)
-                        Picker("Start time", selection: $lectureBeginning) {
-                            Text("0").tag(0)
-                            Text("15").tag(15)
-                            Text("30").tag(30)
-                        }
-                        .pickerStyle(.segmented)
-                        .disabled(lectureDuration == 120)
-                }
             }
             .padding()
     }

@@ -20,6 +20,10 @@ struct FloatingWindowView: View {
                     } label: {
                         Image(systemName: "xmark.circle")
                     }
+                    .buttonBorderShape(.circle)
+                    .buttonStyle(.glass)
+                    .tint(.red.opacity(0.75))
+                    .padding(.horizontal, 10)
                     Spacer()
                 }
                 Spacer()

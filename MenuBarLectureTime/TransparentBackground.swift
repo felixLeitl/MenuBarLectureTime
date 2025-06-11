@@ -14,7 +14,8 @@ struct TransparentWindowModifier: ViewModifier {
                 guard let window else { return }
                 window.backgroundColor = .clear
                 window.titleVisibility = .hidden
-                window.hasShadow = true
+                window.hasShadow = false
+                window.isOpaque = false
                 window.collectionBehavior = [.canJoinAllApplications]
                 window.isMovableByWindowBackground = true
                 window.titleVisibility = .hidden
@@ -25,20 +26,7 @@ struct TransparentWindowModifier: ViewModifier {
                 window.styleMask.remove(.titled)
                 window.level = .statusBar
             })
-            .background(VisualEffectBlur())
     }
-}
-
-struct VisualEffectBlur: NSViewRepresentable {
-    func makeNSView(context: Context) -> NSVisualEffectView {
-        let view = NSVisualEffectView()
-        view.material = .hudWindow
-        view.blendingMode = .behindWindow
-        view.state = .active
-        return view
-    }
-    
-    func updateNSView(_ nsView: NSVisualEffectView, context: Context) {}
 }
 
 struct WindowAccessor: NSViewRepresentable {

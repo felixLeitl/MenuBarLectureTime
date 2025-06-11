@@ -19,17 +19,26 @@ struct MenubarView: View {
         ZStack{
             VStack{
                 HStack{
-                    Button{
-                        openWindow(id: "FloatingWindow")
-                    } label: {
-                        Image(systemName: "macwindow.badge.plus")
-                    }
-                    Spacer()
-                    Button {
-                        showConfig.toggle()
-                    } label: {
-                        Image(systemName: "clock.arrow.trianglehead.counterclockwise.rotate.90")
-                    }
+//                    GlassEffectContainer{
+                        Button{
+                            openWindow(id: "FloatingWindow")
+                        } label: {
+                            Image(systemName: "macwindow.badge.plus")
+                        }
+//                        .glassEffect()
+                        .buttonSizing(.flexible)
+                        .buttonBorderShape(.capsule)
+                        
+                        Spacer()
+                        Button {
+                            showConfig.toggle()
+                        } label: {
+                            Image(systemName: "clock.arrow.trianglehead.counterclockwise.rotate.90")
+                        }
+//                        .glassEffect()
+                        .buttonSizing(.flexible)
+                        .buttonBorderShape(.capsule)
+//                    }
                 }
                 Spacer()
             }

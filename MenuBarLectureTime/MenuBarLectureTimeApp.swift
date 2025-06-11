@@ -11,7 +11,7 @@ import SwiftUI
 struct MenuBarLectureTimeApp: App {
     var body: some Scene {
         
-        let _ = NSApplication.shared.setActivationPolicy(.accessory)
+//        let _ = NSApplication.shared.setActivationPolicy(.accessory)
 
         MenuBarExtra("Lecture Countdown", systemImage: "studentdesk") {
             MenubarView()
@@ -21,14 +21,18 @@ struct MenuBarLectureTimeApp: App {
         Window("Floating Window", id: "FloatingWindow"){
             FloatingWindowView()
                 .modifier(TransparentWindowModifier())
+                .ignoresSafeArea(.container, edges: .top)
                 .onAppear{
                     NSApp.activate(ignoringOtherApps: true)
                 }
-                .contentShape(RoundedRectangle(cornerRadius: 12))
-                .clipShape(RoundedRectangle(cornerRadius: 12))
+//                .toolbarVisibility(.hidden, for: .windowToolbar)
+//                .contentShape(RoundedRectangle(cornerRadius: 12))
+//                .clipShape(RoundedRectangle(cornerRadius: 12))
                 .frame(width: 300, height: 100)
                 .fixedSize(horizontal: false, vertical: false)
+                .glassEffect()
         }
+        .windowStyle(.hiddenTitleBar)
         Settings{
             SettingsView()
                 .frame(width: 300, height: 100)

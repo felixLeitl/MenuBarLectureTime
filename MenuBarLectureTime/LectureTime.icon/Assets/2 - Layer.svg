@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1024px" height="1024px" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>2 - Layer</title>
+    <g id="Template---App-Icons" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="2---Layer" fill="#A6A6A6">
+            <path d="M644.101466,215 L716.716274,215 C723.086059,215 728,210.217714 728,204.195966 L728,112.981048 C728,106.781923 723.086059,102 716.716274,102 C710.528376,102 705.614808,106.781923 705.614808,112.981048 L705.614808,193.214556 L644.101466,193.214556 C637.731681,193.214556 633,197.996841 633,204.195966 C633,210.217714 637.731681,215 644.101466,215 Z" id="Path" transform="translate(680.5, 158.5) rotate(390) translate(-680.5, -158.5)"></path>
+        </g>
+    </g>
+</svg>

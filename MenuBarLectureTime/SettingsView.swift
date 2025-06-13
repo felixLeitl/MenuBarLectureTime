@@ -10,25 +10,28 @@ import ServiceManagement
 
 struct SettingsView: View {
     var body: some View {
-        TabView{
-            TimeSettings()
-                .tabItem{
-                    Label("Time", systemImage: "clock")
-                }
-            ViewSwttings()
-                .tabItem{
-                    Label("View", systemImage: "eye")
-                }
-            LoginView()
-                .tabItem{
-                    Label("Login Item", systemImage: "shield.lefthalf.filled.trianglebadge.exclamationmark")
-                }
+        GlassEffectContainer{
+            TabView{
+                TimeSettings()
+                    .tabItem{
+                        Label("Time", systemImage: "clock")
+                    }
+                ViewSwttings()
+                    .tabItem{
+                        Label("View", systemImage: "eye")
+                    }
+                LoginView()
+                    .tabItem{
+                        Label("Login Item", systemImage: "shield.lefthalf.filled.trianglebadge.exclamationmark")
+                    }
+            }
         }
     }
     
     private struct TimeSettings: View {
         @AppStorage("lectureBeginning") var lectureBeginning: Int = 15
         @AppStorage("lectureDuration") var lectureDuration: Int = 90
+        @State var test: Float = 0.5
         var body: some View {
             VStack{
                 Picker("Duration", selection: $lectureDuration){
@@ -36,13 +39,17 @@ struct SettingsView: View {
                     Text("120 min").tag(120)
                 }
                 .pickerStyle(.segmented)
-                    Picker("Start time", selection: $lectureBeginning) {
-                        Text("0").tag(0)
-                        Text("15").tag(15)
-                        Text("30").tag(30)
-                    }
-                    .pickerStyle(.segmented)
-                    .disabled(lectureDuration == 120)
+                
+                Picker("Start time", selection: $lectureBeginning) {
+                    Text("0").tag(0)
+                    Text("15").tag(15)
+                    Text("30").tag(30)
+                }
+                .pickerStyle(.segmented)
+                .disabled(lectureDuration == 120)
+                
+                Slider(value: $test, in: 0...1)
+            
             }
             .padding()
         }
